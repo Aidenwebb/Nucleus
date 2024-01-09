@@ -1,5 +1,7 @@
 ﻿using Nucleus.Application.Common.Models;
 using Nucleus.Application.Contacts.Commands.CreateContact;
+using Nucleus.Application.Contacts.Commands.DeleteContact;
+using Nucleus.Application.Contacts.Commands.UpdateContact;
 using Nucleus.Application.Contacts.Queries.GetContact;
 using Nucleus.Application.Contacts.Queries.GetContactsWithPagination;
 
@@ -13,10 +15,10 @@ public class Contacts : EndpointGroupBase
             .RequireAuthorization()
             .MapPost(CreateContact)
             .MapGet(GetContactById, "{id}")
-            .MapGet(GetContactsWithPagination);
-        // .MapPut(UpdateContact, "{id}")
-        // .MapPut(UpdateContactDetail, "UpdateDetail/{id}")
-        // .MapDelete(DeleteContact, "{id}");
+            .MapGet(GetContactsWithPagination)
+            .MapPut(UpdateContact, "{id}")
+            // .MapPut(UpdateContactDetail, "UpdateDetail/{id}")
+            .MapDelete(DeleteContact, "{id}");
     }
     
     public async Task<int> CreateContact(ISender sender, CreateContactCommand command)
@@ -34,6 +36,18 @@ public class Contacts : EndpointGroupBase
         return await sender.Send(query);
     }
     
+    public async Task<IResult> UpdateContact(ISender sender, int id, UpdateContactCommand command)
+    {
+        if (id != command.Id) return Results.BadRequest();
+        await sender.Send(command);
+        return Results.NoContent();
+    }
+    
+    public async Task<IResult> DeleteContact(ISender sender, int id)
+    {
+        await sender.Send(new DeleteContactCommand(id));
+        return Results.NoContent();
+    }
     
     
 }
