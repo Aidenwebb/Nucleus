@@ -6,8 +6,8 @@ namespace Nucleus.Application.Companies.Queries.GetCompaniesWithPagination;
 
 public record GetCompaniesWithPaginationQuery : IRequest<PaginatedList<CompanyBriefDto>>
 {
-    public int PageNumber { get; init; } = 1;
-    public int PageSize { get; init; } = 10;
+    public int? PageNumber { get; init; } = 1;
+    public int? PageSize { get; init; } = 10;
 }
 
 public class GetCompaniesWithPaginationQueryValidator : AbstractValidator<GetCompaniesWithPaginationQuery>

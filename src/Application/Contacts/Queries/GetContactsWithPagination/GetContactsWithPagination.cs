@@ -7,8 +7,8 @@ namespace Nucleus.Application.Contacts.Queries.GetContactsWithPagination;
 public record GetContactsWithPaginationQuery : IRequest<PaginatedList<ContactBriefDto>>
 {
     public int CompanyId { get; init; }
-    public int PageNumber { get; init; } = 1;
-    public int PageSize { get; init; } = 10;
+    public int? PageNumber { get; init; } = 1;
+    public int? PageSize { get; init; } = 10;
 }
 
 public class GetContactsWithPaginationQueryValidator : AbstractValidator<GetContactsWithPaginationQuery>
