@@ -1,5 +1,5 @@
 ﻿using Nucleus.Application.Common.Interfaces;
-using Nucleus.Domain.CompanyAggregate;
+using Nucleus.Domain.CompanyAggregate.Entities;
 
 namespace Nucleus.Application.Companies.Queries.GetCompany;
 

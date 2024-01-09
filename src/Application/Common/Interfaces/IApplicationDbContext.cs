@@ -1,4 +1,4 @@
-﻿using Nucleus.Domain.CompanyAggregate;
+﻿using Nucleus.Domain.CompanyAggregate.Entities;
 using Nucleus.Domain.Entities;
 
 namespace Nucleus.Application.Common.Interfaces;

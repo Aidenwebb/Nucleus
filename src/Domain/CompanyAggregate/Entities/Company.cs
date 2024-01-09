@@ -1,4 +1,4 @@
-﻿namespace Nucleus.Domain.CompanyAggregate;
+﻿namespace Nucleus.Domain.CompanyAggregate.Entities;
 
 public class Company : BaseAuditableEntity
 {

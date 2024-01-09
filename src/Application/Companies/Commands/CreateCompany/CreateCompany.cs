@@ -1,5 +1,5 @@
 ﻿using Nucleus.Application.Common.Interfaces;
-using Nucleus.Domain.CompanyAggregate;
+using Nucleus.Domain.CompanyAggregate.Entities;
 using Nucleus.Domain.CompanyAggregate.Events;
 
 namespace Nucleus.Application.Companies.Commands.CreateCompany;

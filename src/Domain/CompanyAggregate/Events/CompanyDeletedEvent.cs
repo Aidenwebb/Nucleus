@@ -1,4 +1,6 @@
-﻿namespace Nucleus.Domain.CompanyAggregate.Events;
+﻿using Nucleus.Domain.CompanyAggregate.Entities;
+
+namespace Nucleus.Domain.CompanyAggregate.Events;
 
 public class CompanyDeletedEvent : BaseEvent
 {

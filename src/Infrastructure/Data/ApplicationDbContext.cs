@@ -4,7 +4,7 @@ using Nucleus.Domain.Entities;
 using Nucleus.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Nucleus.Domain.CompanyAggregate;
+using Nucleus.Domain.CompanyAggregate.Entities;
 
 namespace Nucleus.Infrastructure.Data;
 

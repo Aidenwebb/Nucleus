@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Nucleus.Domain.CompanyAggregate;
+using Nucleus.Domain.CompanyAggregate.Entities;
 
 namespace Nucleus.Infrastructure.Data.Configurations;
 

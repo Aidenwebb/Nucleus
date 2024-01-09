@@ -1,14 +1,13 @@
 ﻿using Azure.Identity;
+using Microsoft.AspNetCore.Mvc;
+using NSwag;
+using NSwag.Generation.Processors.Security;
 using Nucleus.Application.Common.Interfaces;
 using Nucleus.Infrastructure.Data;
 using Nucleus.Web.Services;
-using Microsoft.AspNetCore.Mvc;
-
-using NSwag;
-using NSwag.Generation.Processors.Security;
 using ZymLabs.NSwag.FluentValidation;
 
-namespace Microsoft.Extensions.DependencyInjection;
+namespace Nucleus.Web;
 
 public static class DependencyInjection
 {
