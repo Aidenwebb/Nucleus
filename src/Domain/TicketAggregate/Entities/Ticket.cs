@@ -16,6 +16,6 @@ public class Ticket : BaseAuditableEntity
     public int? ContactId { get; set; }
     public Contact Contact { get; set; } = null!;
 
-    public TicketUrgency Urgency { get; set; } = TicketUrgency.Medium;
-    public TicketImpact Impact { get; set; } = TicketImpact.Medium;
+    public TicketUrgency? Urgency { get; set; } = TicketUrgency.Medium;
+    public TicketImpact? Impact { get; set; } = TicketImpact.Medium;
 }

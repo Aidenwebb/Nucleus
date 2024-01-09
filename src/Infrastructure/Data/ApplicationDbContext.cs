@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Nucleus.Domain.CompanyAggregate.Entities;
 using Nucleus.Domain.ContactAggregate.Entities;
+using Nucleus.Domain.TicketAggregate.Entities;
 
 namespace Nucleus.Infrastructure.Data;
 
@@ -20,6 +21,8 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplica
     public DbSet<Company> Companies => Set<Company>();
     
     public DbSet<Contact> Contacts => Set<Contact>();
+    
+    public DbSet<Ticket> Tickets => Set<Ticket>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
