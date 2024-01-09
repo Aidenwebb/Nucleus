@@ -6,9 +6,9 @@ namespace Nucleus.Application.Contacts.Queries.GetContactsWithPagination;
 
 public record GetContactsWithPaginationQuery : IRequest<PaginatedList<ContactBriefDto>>
 {
-    public int CompanyId { get; init; }
-    public int PageNumber { get; init; } = 1;
-    public int PageSize { get; init; } = 10;
+    public int? CompanyId { get; init; }
+    public int? PageNumber { get; init; } = 1;
+    public int? PageSize { get; init; } = 10;
 }
 
 public class GetContactsWithPaginationQueryValidator : AbstractValidator<GetContactsWithPaginationQuery>
@@ -31,8 +31,14 @@ public class GetContactsWithPaginationQueryHandler : IRequestHandler<GetContacts
 
     public async Task<PaginatedList<ContactBriefDto>> Handle(GetContactsWithPaginationQuery request, CancellationToken cancellationToken)
     {
-        return await _context.Contacts
-            .Where(x => x.CompanyId == request.CompanyId)
+        var query = _context.Contacts.AsQueryable();
+
+        if (request.CompanyId != null)
+        {
+            query = query.Where(x => x.CompanyId == request.CompanyId);
+        }
+        
+        return await query
             .OrderBy(x => x.FamilyName)
             .ProjectTo<ContactBriefDto>(_mapper.ConfigurationProvider)
             .PaginatedListAsync(request.PageNumber, request.PageSize);

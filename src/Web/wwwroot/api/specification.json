@@ -800,30 +800,30 @@
           {
             "name": "CompanyId",
             "in": "query",
-            "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             },
             "x-position": 1
           },
           {
             "name": "PageNumber",
             "in": "query",
-            "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             },
             "x-position": 2
           },
           {
             "name": "PageSize",
             "in": "query",
-            "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             },
             "x-position": 3
           }
@@ -998,20 +998,20 @@
           {
             "name": "PageNumber",
             "in": "query",
-            "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             },
             "x-position": 1
           },
           {
             "name": "PageSize",
             "in": "query",
-            "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             },
             "x-position": 2
           }
