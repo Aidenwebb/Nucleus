@@ -872,6 +872,74 @@
             "JWT": []
           }
         ]
+      },
+      "put": {
+        "tags": [
+          "Companies"
+        ],
+        "operationId": "UpdateCompany",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          }
+        ],
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCompanyCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 2
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Companies"
+        ],
+        "operationId": "DeleteCompany",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       }
     }
   },
@@ -1469,6 +1537,37 @@
           },
           "name": {
             "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "UpdateCompanyCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "identifier",
+          "name"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "identifier": {
+            "type": "string",
+            "maxLength": 10,
+            "minLength": 0,
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 0,
+            "nullable": true
+          },
+          "parentCompanyId": {
+            "type": "integer",
+            "format": "int32",
             "nullable": true
           }
         }

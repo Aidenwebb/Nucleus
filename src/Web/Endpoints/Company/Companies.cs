@@ -1,5 +1,7 @@
 ﻿using Nucleus.Application.Common.Models;
 using Nucleus.Application.Companies.Commands.CreateCompany;
+using Nucleus.Application.Companies.Commands.DeleteCompany;
+using Nucleus.Application.Companies.Commands.UpdateCompany;
 using Nucleus.Application.Companies.Queries.GetCompaniesWithPagination;
 using Nucleus.Application.Companies.Queries.GetCompany;
 
@@ -13,11 +15,10 @@ public class Companies : EndpointGroupBase
             .RequireAuthorization()
             .MapPost(CreateCompany)
             .MapGet(GetCompanyById, "{id}")
-            .MapGet(GetCompaniesWithPagination);
-
-        // .MapPut(UpdateCompany, "{id}")
+            .MapGet(GetCompaniesWithPagination)
+            .MapPut(UpdateCompany, "{id}")
         // .MapPut(UpdateCompanyDetail, "UpdateDetail/{id}")
-        // .MapDelete(DeleteCompany, "{id}");
+            .MapDelete(DeleteCompany, "{id}");
     }
     
     public async Task<int> CreateCompany(ISender sender, CreateCompanyCommand command)
@@ -34,26 +35,26 @@ public class Companies : EndpointGroupBase
     {
         return await sender.Send(query);
     }
-    //
-    //
-    //
-    // public async Task<IResult> UpdateCompany(ISender sender, int id, UpdateCompanyCommand command)
-    // {
-    //     if (id != command.Id) return Results.BadRequest();
-    //     await sender.Send(command);
-    //     return Results.NoContent();
-    // }
-    //
+    
+    
+    
+    public async Task<IResult> UpdateCompany(ISender sender, int id, UpdateCompanyCommand command)
+    {
+        if (id != command.Id) return Results.BadRequest();
+        await sender.Send(command);
+        return Results.NoContent();
+    }
+    
     // public async Task<IResult> UpdateCompanyDetail(ISender sender, int id, UpdateCompanyDetailCommand command)
     // {
     //     if (id != command.Id) return Results.BadRequest();
     //     await sender.Send(command);
     //     return Results.NoContent();
     // }
-    //
-    // public async Task<IResult> DeleteCompany(ISender sender, int id)
-    // {
-    //     await sender.Send(new DeleteCompanyCommand(id));
-    //     return Results.NoContent();
-    // }
+    
+    public async Task<IResult> DeleteCompany(ISender sender, int id)
+    {
+        await sender.Send(new DeleteCompanyCommand(id));
+        return Results.NoContent();
+    }
 }
