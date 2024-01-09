@@ -753,6 +753,44 @@
           }
         ]
       }
+    },
+    "/api/Companies": {
+      "post": {
+        "tags": [
+          "Companies"
+        ],
+        "operationId": "CreateCompany",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCompanyCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
+      }
     }
   },
   "components": {
@@ -1248,6 +1286,33 @@
           },
           "summary": {
             "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "CreateCompanyCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "identifier",
+          "name"
+        ],
+        "properties": {
+          "identifier": {
+            "type": "string",
+            "maxLength": 10,
+            "minLength": 0,
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 0,
+            "nullable": true
+          },
+          "parentCompanyId": {
+            "type": "integer",
+            "format": "int32",
             "nullable": true
           }
         }
