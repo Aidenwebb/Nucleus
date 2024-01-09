@@ -18,4 +18,6 @@ public class Ticket : BaseAuditableEntity
 
     public TicketUrgency? Urgency { get; set; } = TicketUrgency.Medium;
     public TicketImpact? Impact { get; set; } = TicketImpact.Medium;
+
+    public int Priority { get; set; }
 }

@@ -21,5 +21,8 @@ public class TicketConfiguration : IEntityTypeConfiguration<Ticket>
 
         builder.Property(ticket => ticket.Impact)
             .HasDefaultValue(TicketImpact.Medium);
+
+        builder.Property(ticket => ticket.Priority)
+            .HasComputedColumnSql("[Impact] * [Urgency]", stored: true);
     }
 }
