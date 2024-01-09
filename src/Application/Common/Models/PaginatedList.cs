@@ -2,6 +2,8 @@
 
 public class PaginatedList<T>
 {
+    const int DefaultPageNumber = 1;
+    private const int DefaultPageSize = 10;
     public IReadOnlyCollection<T> Items { get; }
     public int PageNumber { get; }
     public int TotalPages { get; }
@@ -16,14 +18,18 @@ public class PaginatedList<T>
     }
 
     public bool HasPreviousPage => PageNumber > 1;
-
     public bool HasNextPage => PageNumber < TotalPages;
 
-    public static async Task<PaginatedList<T>> CreateAsync(IQueryable<T> source, int pageNumber, int pageSize)
+    public static async Task<PaginatedList<T>> CreateAsync(IQueryable<T> source, int? pageNumber = DefaultPageNumber, int? pageSize = DefaultPageSize)
     {
         var count = await source.CountAsync();
-        var items = await source.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
+        
+        // Set Defaults if null
+        pageNumber ??= DefaultPageNumber;
+        pageSize ??= DefaultPageSize;
+        
+        var items = await source.Skip((pageNumber.Value - 1) * pageSize.Value).Take(pageSize.Value).ToListAsync();
 
-        return new PaginatedList<T>(items, count, pageNumber, pageSize);
+        return new PaginatedList<T>(items, count, pageNumber.Value, pageSize.Value);
     }
 }
