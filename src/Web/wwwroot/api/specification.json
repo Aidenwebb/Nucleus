@@ -754,6 +754,44 @@
         ]
       }
     },
+    "/api/Tickets": {
+      "post": {
+        "tags": [
+          "Tickets"
+        ],
+        "operationId": "CreateTicket",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTicketCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
+      }
+    },
     "/api/Contacts": {
       "post": {
         "tags": [
@@ -1637,6 +1675,83 @@
             "nullable": true
           }
         }
+      },
+      "CreateTicketCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "summary"
+        ],
+        "properties": {
+          "summary": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 0,
+            "nullable": true
+          },
+          "companyId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "contactId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "urgency": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/TicketUrgency"
+              }
+            ]
+          },
+          "impact": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/TicketImpact"
+              }
+            ]
+          }
+        }
+      },
+      "TicketUrgency": {
+        "type": "integer",
+        "description": "",
+        "x-enumNames": [
+          "VeryLow",
+          "Low",
+          "Medium",
+          "High",
+          "VeryHigh"
+        ],
+        "enum": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "TicketImpact": {
+        "type": "integer",
+        "description": "",
+        "x-enumNames": [
+          "VeryLow",
+          "Low",
+          "Medium",
+          "High",
+          "VeryHigh"
+        ],
+        "enum": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
       },
       "CreateContactCommand": {
         "type": "object",

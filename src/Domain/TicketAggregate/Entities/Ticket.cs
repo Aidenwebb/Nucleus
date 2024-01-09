@@ -11,10 +11,10 @@ public class Ticket : BaseAuditableEntity
     public string? ExternalReference { get; set; }
 
     public int? CompanyId { get; set; }
-    public Company Company { get; set; } = null!;
+    public Company? Company { get; set; } = null!;
     
     public int? ContactId { get; set; }
-    public Contact Contact { get; set; } = null!;
+    public Contact? Contact { get; set; } = null!;
 
     public TicketUrgency? Urgency { get; set; } = TicketUrgency.Medium;
     public TicketImpact? Impact { get; set; } = TicketImpact.Medium;
