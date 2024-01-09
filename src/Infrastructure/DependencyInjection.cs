@@ -1,14 +1,15 @@
-﻿using Nucleus.Application.Common.Interfaces;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Nucleus.Application.Common.Interfaces;
 using Nucleus.Domain.Constants;
 using Nucleus.Infrastructure.Data;
 using Nucleus.Infrastructure.Data.Interceptors;
 using Nucleus.Infrastructure.Identity;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Diagnostics;
-using Microsoft.Extensions.Configuration;
 
-namespace Microsoft.Extensions.DependencyInjection;
+namespace Nucleus.Infrastructure;
 
 public static class DependencyInjection
 {

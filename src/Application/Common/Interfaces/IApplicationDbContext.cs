@@ -1,5 +1,5 @@
-﻿using Nucleus.Domain.Entities;
-using Nucleus.Domain.Entities.Countries;
+﻿using Nucleus.Domain.CompanyAggregate.Entities;
+using Nucleus.Domain.Entities;
 
 namespace Nucleus.Application.Common.Interfaces;
 
@@ -9,7 +9,7 @@ public interface IApplicationDbContext
 
     DbSet<TodoItem> TodoItems { get; }
     
-    DbSet<Country> Countries { get; }
-
+    DbSet<Company>  Companies { get; }
+    
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

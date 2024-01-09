@@ -4,7 +4,7 @@ using Nucleus.Domain.Entities;
 using Nucleus.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Nucleus.Domain.Entities.Countries;
+using Nucleus.Domain.CompanyAggregate.Entities;
 
 namespace Nucleus.Infrastructure.Data;
 
@@ -16,7 +16,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplica
 
     public DbSet<TodoItem> TodoItems => Set<TodoItem>();
 
-    public DbSet<Country> Countries => Set<Country>();
+    public DbSet<Company> Companies => Set<Company>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

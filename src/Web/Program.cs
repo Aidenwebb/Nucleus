@@ -1,4 +1,6 @@
+using Nucleus.Infrastructure;
 using Nucleus.Infrastructure.Data;
+using Nucleus.Web;
 
 var builder = WebApplication.CreateBuilder(args);
 
