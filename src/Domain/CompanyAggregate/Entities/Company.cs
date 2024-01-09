@@ -2,7 +2,14 @@
 
 public class Company : BaseAuditableEntity
 {
-    public string? Identifier { get; set; }
+    private string? _identifier;
+
+    public string? Identifier
+    {
+        get => _identifier;
+        set => _identifier = value?.ToUpper();
+    }
+
     public string? Name { get; set; }
     
     public int? ParentCompanyId { get; set; }
