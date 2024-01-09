@@ -1,5 +1,6 @@
 ﻿using Nucleus.Application.Common.Models;
 using Nucleus.Application.Companies.Commands.CreateCompany;
+using Nucleus.Application.Companies.Queries.GetCompaniesWithPagination;
 using Nucleus.Application.Companies.Queries.GetCompany;
 
 namespace Nucleus.Web.Endpoints.Company;
@@ -11,8 +12,8 @@ public class Companies : EndpointGroupBase
         app.MapGroup(this)
             .RequireAuthorization()
             .MapPost(CreateCompany)
-            .MapGet(GetCompanyById, "{id}");
-        // .MapGet(GetCompaniesWithPagination)
+            .MapGet(GetCompanyById, "{id}")
+            .MapGet(GetCompaniesWithPagination);
 
         // .MapPut(UpdateCompany, "{id}")
         // .MapPut(UpdateCompanyDetail, "UpdateDetail/{id}")
@@ -29,10 +30,10 @@ public class Companies : EndpointGroupBase
         return await sender.Send(query);
     }
     
-    // public async Task<PaginatedList<CompanyBriefDto>> GetCompaniesWithPagination(ISender sender, [AsParameters] GetCompaniesWithPaginationQuery query)
-    // {
-    //     return await sender.Send(query);
-    // }
+    public async Task<PaginatedList<CompanyBriefDto>> GetCompaniesWithPagination(ISender sender, [AsParameters] GetCompaniesWithPaginationQuery query)
+    {
+        return await sender.Send(query);
+    }
     //
     //
     //
