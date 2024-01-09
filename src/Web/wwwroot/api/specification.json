@@ -754,6 +754,44 @@
         ]
       }
     },
+    "/api/Contacts": {
+      "post": {
+        "tags": [
+          "Contacts"
+        ],
+        "operationId": "CreateContact",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateContactCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
+      }
+    },
     "/api/Companies": {
       "post": {
         "tags": [
@@ -1436,6 +1474,28 @@
           },
           "summary": {
             "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "CreateContactCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "companyId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "givenName": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 0,
+            "nullable": true
+          },
+          "familyName": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 0,
             "nullable": true
           }
         }
