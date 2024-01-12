@@ -2095,6 +2095,20 @@
             "format": "date-time",
             "nullable": true
           },
+          "timeDelta": {
+            "type": "string",
+            "format": "duration",
+            "nullable": true
+          },
+          "hoursDeduct": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "hoursActual": {
+            "type": "number",
+            "format": "decimal",
+            "nullable": true
+          },
           "enteredBy": {
             "type": "string",
             "nullable": true
@@ -2182,6 +2196,20 @@
             "format": "date-time",
             "nullable": true
           },
+          "timeDelta": {
+            "type": "string",
+            "format": "duration",
+            "nullable": true
+          },
+          "hoursDeduct": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "hoursActual": {
+            "type": "number",
+            "format": "decimal",
+            "nullable": true
+          },
           "enteredBy": {
             "type": "string",
             "nullable": true
@@ -2228,6 +2256,11 @@
           "timeEnd": {
             "type": "string",
             "format": "date-time",
+            "nullable": true
+          },
+          "hoursDeduct": {
+            "type": "number",
+            "format": "decimal",
             "nullable": true
           },
           "publicNotes": {

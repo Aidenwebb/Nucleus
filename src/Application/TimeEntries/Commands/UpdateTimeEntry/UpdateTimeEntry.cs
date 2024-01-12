@@ -15,6 +15,7 @@ public record UpdateTimeEntryCommand : IRequest
     public DateTime TimeStart { get; init; }
 
     public DateTime? TimeEnd { get; init; }
+    public Decimal? HoursDeduct { get; init; }
     
     public string? PublicNotes { get; init; }
     public string? InternalNotes { get; init; }
@@ -53,6 +54,7 @@ public class UpdateTimeEntryCommandHandler : IRequestHandler<UpdateTimeEntryComm
         entity.ChargeToType = request.ChargeToType;
         entity.TimeStart = request.TimeStart;
         entity.TimeEnd = request.TimeEnd;
+        entity.HoursDeduct = request.HoursDeduct ?? 0M;
         entity.PublicNotes = request.PublicNotes;
         entity.InternalNotes = request.InternalNotes;
         entity.PrivateNotes = request.PrivateNotes;

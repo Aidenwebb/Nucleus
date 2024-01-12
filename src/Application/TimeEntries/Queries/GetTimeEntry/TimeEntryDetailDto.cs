@@ -17,6 +17,9 @@ public class TimeEntryDetailDto
     public DateTime TimeStart { get; set; }
 
     public DateTime? TimeEnd { get; set; }
+    public TimeSpan? TimeDelta { get; set; }
+    public Decimal HoursDeduct { get; set; }
+    public Decimal? HoursActual { get; set; }
 
     public string? EnteredBy { get; set; }
     

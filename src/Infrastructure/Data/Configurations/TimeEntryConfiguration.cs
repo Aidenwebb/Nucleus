@@ -12,7 +12,14 @@ public class TimeEntryConfiguration : IEntityTypeConfiguration<TimeEntry>
             .IsRequired();
 
         builder.Property(timeEntry => timeEntry.TimeStart)
-            .HasDefaultValue(DateTime.UtcNow)
+            .HasDefaultValue(DateTime.MinValue)
             .IsRequired();
+        
+        builder.Property(timeEntry => timeEntry.HoursDeduct)
+            .HasDefaultValue(0)
+            .HasPrecision(18,4);
+
+        builder.Property(timeEntry => timeEntry.HoursActual)
+            .HasPrecision(18,4);
     }
 }
