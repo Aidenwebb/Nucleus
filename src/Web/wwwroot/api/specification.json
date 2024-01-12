@@ -872,6 +872,74 @@
             "JWT": []
           }
         ]
+      },
+      "put": {
+        "tags": [
+          "TimeEntries"
+        ],
+        "operationId": "UpdateTimeEntry",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          }
+        ],
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTimeEntryCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 2
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "TimeEntries"
+        ],
+        "operationId": "DeleteTimeEntry",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       }
     },
     "/api/Tickets": {
@@ -2115,6 +2183,62 @@
             "nullable": true
           },
           "enteredBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "ticketId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        }
+      },
+      "UpdateTimeEntryCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "companyId"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "companyId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "chargeToCompanyId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "chargeToType": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ChargeToType"
+              }
+            ]
+          },
+          "timeStart": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "timeEnd": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "publicNotes": {
+            "type": "string",
+            "nullable": true
+          },
+          "internalNotes": {
+            "type": "string",
+            "nullable": true
+          },
+          "privateNotes": {
             "type": "string",
             "nullable": true
           },
