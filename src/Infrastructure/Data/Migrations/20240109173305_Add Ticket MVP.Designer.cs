@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Nucleus.Infrastructure.Data;
 
@@ -11,9 +12,11 @@ using Nucleus.Infrastructure.Data;
 namespace Nucleus.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240109173305_Add Ticket MVP")]
+    partial class AddTicketMVP
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -348,9 +351,6 @@ namespace Nucleus.Infrastructure.Data.Migrations
                         .HasMaxLength(10000)
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ExpectedResult")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("ExternalReference")
                         .HasColumnType("nvarchar(max)");
 
@@ -364,11 +364,6 @@ namespace Nucleus.Infrastructure.Data.Migrations
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Priority")
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("int")
-                        .HasComputedColumnSql("[Impact] * [Urgency]", true);
 
                     b.Property<string>("Summary")
                         .IsRequired()
