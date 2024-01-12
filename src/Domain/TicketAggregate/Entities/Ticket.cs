@@ -8,6 +8,9 @@ public class Ticket : BaseAuditableEntity
 {
     public string? Summary { get; set; }
     public string? Description { get; set; }
+    
+    public string? ExpectedResult { get; set; } // What is the desired or expected outcome of the ticket?
+    
     public string? ExternalReference { get; set; }
 
     public int? CompanyId { get; set; }

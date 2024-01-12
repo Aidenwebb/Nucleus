@@ -7,6 +7,7 @@ public record UpdateTicketCommand : IRequest
 {
     public int Id { get; init; }
     public string? Summary { get; init; }
+    public string? ExpectedResult { get; init; }
     public string? Description { get; init; }
     public int? CompanydId { get; init; }
     public int? ContactId { get; init; }
@@ -41,6 +42,7 @@ public class UpdateTicketCommandHandler : IRequestHandler<UpdateTicketCommand>
         Guard.Against.NotFound(request.Id, entity);
 
         entity.Summary = request.Summary;
+        entity.ExpectedResult = request.ExpectedResult;
         entity.Description = request.Description;
         entity.CompanyId = request.CompanydId;
         entity.ContactId = request.ContactId;

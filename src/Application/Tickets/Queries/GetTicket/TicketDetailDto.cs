@@ -7,6 +7,7 @@ public class TicketDetailDto
 {
     public int Id { get; set; }
     public string? Summary { get; set; }
+    public string? ExpectedResult { get; set; }
     public string? Description { get; set; }
     public string? ExternalReference { get; set; }
     public int? CompanyId { get; set; }

@@ -1915,6 +1915,10 @@
             "type": "string",
             "nullable": true
           },
+          "expectedResult": {
+            "type": "string",
+            "nullable": true
+          },
           "description": {
             "type": "string",
             "nullable": true
@@ -2024,6 +2028,10 @@
             "type": "string",
             "maxLength": 200,
             "minLength": 0,
+            "nullable": true
+          },
+          "expectedResult": {
+            "type": "string",
             "nullable": true
           },
           "description": {
