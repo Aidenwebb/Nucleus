@@ -2,6 +2,7 @@
 using Nucleus.Domain.ContactAggregate.Entities;
 using Nucleus.Domain.Entities;
 using Nucleus.Domain.TicketAggregate.Entities;
+using Nucleus.Domain.TimeEntryAggregate.Entities;
 
 namespace Nucleus.Application.Common.Interfaces;
 
@@ -15,6 +16,8 @@ public interface IApplicationDbContext
     DbSet<Contact>  Contacts { get; }
     
     DbSet<Ticket>  Tickets { get; }
+    
+    DbSet<TimeEntry> TimeEntries { get; }
     
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

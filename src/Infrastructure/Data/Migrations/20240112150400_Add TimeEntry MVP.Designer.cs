@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Nucleus.Infrastructure.Data;
 
@@ -11,9 +12,11 @@ using Nucleus.Infrastructure.Data;
 namespace Nucleus.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240112150400_Add TimeEntry MVP")]
+    partial class AddTimeEntryMVP
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -415,16 +418,6 @@ namespace Nucleus.Infrastructure.Data.Migrations
                     b.Property<string>("EnteredBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal?>("HoursActual")
-                        .HasPrecision(18, 4)
-                        .HasColumnType("decimal(18,4)");
-
-                    b.Property<decimal>("HoursDeduct")
-                        .ValueGeneratedOnAdd()
-                        .HasPrecision(18, 4)
-                        .HasColumnType("decimal(18,4)")
-                        .HasDefaultValue(0m);
-
                     b.Property<string>("InternalNotes")
                         .HasColumnType("nvarchar(max)");
 
@@ -443,16 +436,13 @@ namespace Nucleus.Infrastructure.Data.Migrations
                     b.Property<int?>("TicketId")
                         .HasColumnType("int");
 
-                    b.Property<TimeSpan?>("TimeDelta")
-                        .HasColumnType("time");
-
                     b.Property<DateTime?>("TimeEnd")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("TimeStart")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
+                        .HasDefaultValue(new DateTime(2024, 1, 12, 15, 4, 0, 545, DateTimeKind.Utc).AddTicks(2171));
 
                     b.HasKey("Id");
 

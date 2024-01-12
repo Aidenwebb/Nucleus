@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Nucleus.Domain.CompanyAggregate.Entities;
 using Nucleus.Domain.ContactAggregate.Entities;
 using Nucleus.Domain.TicketAggregate.Entities;
+using Nucleus.Domain.TimeEntryAggregate.Entities;
 
 namespace Nucleus.Infrastructure.Data;
 
@@ -23,6 +24,8 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplica
     public DbSet<Contact> Contacts => Set<Contact>();
     
     public DbSet<Ticket> Tickets => Set<Ticket>();
+
+    public DbSet<TimeEntry> TimeEntries => Set<TimeEntry>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
